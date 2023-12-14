@@ -148,9 +148,9 @@ class ComputeLoss:
                 
                 # iou = bbox_effciou(pbox, tbox[i], CIoU=True).squeeze() 
                 
-                # iou = bbox_ESAiou(pbox, tbox[i], EIoU=True).squeeze() 
+                iou = bbox_ESAiou(pbox, tbox[i], EIoU=True).squeeze() 
                 
-                iou = bbox_esiou(pbox, tbox[i], EIoU=True).squeeze() 
+                # iou = bbox_esiou(pbox, tbox[i], EIoU=True).squeeze() 
                 
                 lbox += (1.0 - iou).mean()  # iou loss 
 
