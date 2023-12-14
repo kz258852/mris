@@ -5,6 +5,9 @@ import torch.nn.functional as F
 from ..general import xywh2xyxy
 from ..loss import FocalLoss, smooth_BCE
 from ..metrics import bbox_iou
+
+from ..metrics import bbox_ESAiou
+
 from ..torch_utils import de_parallel
 from .general import crop_mask
 
@@ -62,7 +65,10 @@ class ComputeLoss:
                 pxy = pxy.sigmoid() * 2 - 0.5
                 pwh = (pwh.sigmoid() * 2) ** 2 * anchors[i]
                 pbox = torch.cat((pxy, pwh), 1)  # predicted box
-                iou = bbox_iou(pbox, tbox[i], CIoU=True).squeeze()  # iou(prediction, target)
+                # iou = bbox_iou(pbox, tbox[i], CIoU=True).squeeze()  # iou(prediction, target)
+                
+                iou = bbox_ESAiou(pbox, tbox[i], EIoU=True).squeeze() 
+
                 lbox += (1.0 - iou).mean()  # iou loss
 
                 # Objectness
