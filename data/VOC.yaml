@@ -1,0 +1,9 @@
+
+
+train: /home/kz/yolov5-master/mydata/train.txt   # train images (relative to 'path')  16551'' images
+val: /home/kz/yolov5-master/mydata/val.txt   # val images (relative to 'path')  4952 images
+nc: 2
+# Classes
+names: ['purple','green']
+
+

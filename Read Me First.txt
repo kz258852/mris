@@ -1,0 +1,8 @@
+1. The well-trained weight files of MrisNet for radar images have been placed in runs\train-seg\exp26\weights ;
+
+2. In mydata\images\val , we have provided some radar images for everyone to use for testing or performing basic training tasks ;
+
+3. Before running the testing code, please ensure that the environment for YOLOv5 has been properly set up ;
+
+4. You can use the following command to quickly run the testing code, and the results will be saved in runs\predict-seg .
+   python segment/predict.py --weights /home/kz/mris/runs/train-seg/exp26/weights/best.pt --source /home/kz/mris/testing/radar-pics 
